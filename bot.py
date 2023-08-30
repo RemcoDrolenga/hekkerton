@@ -1,9 +1,9 @@
 import discord
 import responses
 
-async def send_message(message, user_message, is_private):
+async def send_message(message, user_message, is_private, username):
     try:
-        response = responses.get_response(user_message)
+        response = responses.get_response(user_message, username )
         await message.author.send(response) if is_private else await message.channel.send(response)
 
     except Exception as e:
@@ -11,7 +11,7 @@ async def send_message(message, user_message, is_private):
 
     
 def run_discord_bot():
-    TOKEN = 'MTE0NjA1OTY4MzAzNjE1MTkzMQ.GQo_cF.WL3ECjtBIbXPqS2EyyoeXNTbLhBb7rp8fOFx3Q'
+    TOKEN = 'MTE0NjA1OTY4MzAzNjE1MTkzMQ.G1dV1K.w2yfL5Z0fuMe5JTL31BRLpGeFkRK0dkdZXTtak'
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
@@ -33,8 +33,8 @@ def run_discord_bot():
 
         if user_message[0] =='?':
             user_message = user_message[1:]
-            await send_message(message, user_message, is_private=True)
+            await send_message(message, user_message, is_private=True, username=username)
         else:
-            await send_message(message, user_message, is_private=False)
+            await send_message(message, user_message, is_private=False, username=username)
     
     client.run(TOKEN)
