@@ -20,7 +20,7 @@ def get_response(message: str, user: str) -> str:
 
 
     if p_message == '!help':
-        return '```Usable Commands \n 1. !addgame  \n 2. !list  \n 3. !clear  \n !count  \n !vote  \n !finish ``` '
+        return '```Usable Commands \n 1. !addgame  \n 2. !list  \n 3. !clear  \n 4. !vote  \n 5. !finish ``` '
     
     if message == 'roll':
         return str(random.randint(1, 6))
@@ -56,8 +56,6 @@ def get_response(message: str, user: str) -> str:
     if p_message == "!displaylist":
         return display_list_of_games
 
-    if p_message == "!count":
-        return NumberGamesAdded
 
     if p_message == "!clear":
         list_of_games.clear()
@@ -89,5 +87,4 @@ def get_response(message: str, user: str) -> str:
         
 
 
-    else:
-        return '```Command not found. Type !help for a list of commands```'
+    
