@@ -53,9 +53,6 @@ def get_response(message: str, user: str) -> str:
     if p_message == "!list":
         return list_of_games
 
-    if p_message == "!displaylist":
-        return display_list_of_games
-
 
     if p_message == "!clear":
         list_of_games.clear()
@@ -79,11 +76,12 @@ def get_response(message: str, user: str) -> str:
         return NewGames
 
     if p_message == "!finish":
+        max_votes = 0
         for game, votes in list_of_games.items():
             if votes > max_votes:
                 max_votes = votes
                 most_voted_game = game
-        return most_voted_game
+        return "the game with the most votes is: " + most_voted_game
         
 
 
